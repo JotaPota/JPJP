@@ -70,7 +70,7 @@ public class pantalla3 extends AppCompatActivity implements  GestureDetector.OnG
 
     @Override
     public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
-        text_gestos.setText("TAS ");
+        text_gestos.setText("Deixa apretat ");
 
         return false;
     }

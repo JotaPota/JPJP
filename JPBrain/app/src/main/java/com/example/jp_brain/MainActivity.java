@@ -17,7 +17,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.jjoe64.graphview.GraphView;
+
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class MainActivity extends AppCompatActivity {
+    public int temps1 = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,16 +31,26 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Button button1 = findViewById(R.id.solucio);
         final EditText Resultat1 = findViewById(R.id.Resultat1);
-
+        GraphView graph = (GraphView) findViewById(R.id.grafico);
+        Timer reloj = new Timer();
+        TimerTask task = new TimerTask() {
+            @Override
+            public void run() {
+                temps1 = temps1 + 1 ;
+            }
+        };
+        reloj.schedule(task, 1000,1000);
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 Intent i = new Intent(MainActivity.this, pantalla2.class);
                 if  (Integer.parseInt(Resultat1.getText().toString()) == 9){
+                    notificacio();
+                    i.putExtra("temps", temps1);
                     startActivity(i);
                 }
-                
+
                 else
                 {
                     notificacio();
@@ -57,9 +73,6 @@ public class MainActivity extends AppCompatActivity {
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.notify(1, builder.build());
     }
-
-
-
 
 }
 

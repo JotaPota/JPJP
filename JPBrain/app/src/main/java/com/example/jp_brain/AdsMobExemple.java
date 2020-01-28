@@ -31,6 +31,9 @@ public class AdsMobExemple extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ads_mob_exemple);
+        Bundle bundle = getIntent().getExtras();
+        final int temps1 = bundle.getInt("temps1");
+        final int temps2 = bundle.getInt("temps2");
         Timer reloj = new Timer();
         TimerTask task = new TimerTask() {
             @Override
@@ -39,6 +42,8 @@ public class AdsMobExemple extends AppCompatActivity {
 
                 if (sum == 5){
                      Intent i = new Intent(AdsMobExemple.this, pantalla3.class);
+                     i.putExtra("temps1", temps1);
+                    i.putExtra("temps2", temps2);
                      startActivity(i);
                  }
             }

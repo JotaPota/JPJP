@@ -3,6 +3,7 @@ package com.example.jp_brain;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.widget.TextView;
 
 import com.jjoe64.graphview.DefaultLabelFormatter;
 import com.jjoe64.graphview.GraphView;
@@ -24,6 +25,7 @@ public class pantalla_final extends AppCompatActivity {
         temps1 = bundle.getInt("temps1");
         temps2 = bundle.getInt("temps2");
         temps3 = bundle.getInt("temps3");
+        TextView tempsf = (TextView) findViewById(R.id.tempsf);
         GraphView graph = findViewById(R.id.grafico);
         graph.getGridLabelRenderer().setNumHorizontalLabels(4);
         graph.getGridLabelRenderer().setNumVerticalLabels(10);
@@ -33,6 +35,8 @@ public class pantalla_final extends AppCompatActivity {
         /*series.setTitle("segundos");
         graph.getLegendRenderer().setVisible(true);
         graph.getLegendRenderer().setTextSize(50);*/
+        tempsf.setText("Has tardat :"+String.valueOf(temps1+temps2+temps3)+"s");
+
     }
     private DataPoint[] getDataPoint(){
         DataPoint[] dp = new DataPoint[]
